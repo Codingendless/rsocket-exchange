@@ -29,5 +29,5 @@ import reactor.core.publisher.Mono;
 public interface AnswerService {
 
     @RSocketExchange("answer")
-    public Mono<Answer> answer(@Payload Question question);
+    Mono<Answer> answer(@Payload Question question);
 }

@@ -34,16 +34,16 @@ dependencies {
 java {
     withSourcesJar()
 }
+test {
+    useJUnitPlatform()
+}
 
-plugins.withType(JavaPlugin) {
+plugins.withType(JavaPlugin).configureEach {
     project.sourceCompatibility = JavaVersion.VERSION_17
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = "UTF-8"
-}
-tasks.named('test') {
-    useJUnitPlatform()
 }
 
 spotless {

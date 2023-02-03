@@ -50,9 +50,12 @@ public class RSocketExchangeClientConfigure {
     }
 
     @Bean
-    public AnswerService answerService(RSocketRequester rsocketRequester) {
-        RSocketServiceProxyFactory factory =
-                RSocketServiceProxyFactory.builder(rsocketRequester).build();
+    public RSocketServiceProxyFactory proxyFactory(RSocketRequester rsocketRequester) {
+        return RSocketServiceProxyFactory.builder(rsocketRequester).build();
+    }
+
+    @Bean
+    public AnswerService answerService(RSocketServiceProxyFactory factory) {
         return factory.createClient(AnswerService.class);
     }
 }
